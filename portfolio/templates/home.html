@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+<header class="row">
+  <div class="col-md-4">
+    <img src="{% static 'cleo.jpeg' %}" alt="" width="200" height="200">
+  </div>
+  <div class="col-md-8">
+    <h1>Ella es <strong>Cleo la gata mas hermosa</strong></h1>
+    <h3>Guapisima</h3>
+    <p>"Con su mirada tranquila y suavidad infinita, mi gato es el reflejo perfecto del amor en su forma más pura y serena."</p>
+    <li class="nav-item d-flex align-items-center">
+        <a class="btn btn-primary btn-lg rounded-0 my-3" href="{% static 'curriculum.pdf' %}">Download CV</a>
+    </li>
+  </div>
+</header>
+
+<header class="row"> <!-- Agregado -->
+    <div class="col-md-8">
+        <h1>Yo soy <strong>Mildreth Moreira</strong></h1>
+        <h3>Como llego a mi Cleo?</h3>
+        <p>En el mundo de los gatos callejeros, la historia de Cleo comienza como la de muchos otros: sin un hogar y luchando por sobrevivir en las duras calles de la ciudad. Abandonada por su antiguo dueño, esta pequeña gata tímida y solitaria vagaba por las calles, buscando refugio y comida donde pudiera encontrarla.
+
+          Un día, el destino intervino y nuestros caminos se cruzaron. Me encontré con Cleo mientras caminaba por el vecindario. Sus ojos tristes y su pelaje desaliñado me rompieron el corazón, y supe en ese momento que tenía que hacer algo para ayudarla.
+          
+          Decidí llevarla a casa, aunque solo fuera temporalmente, para brindarle un lugar seguro y cálido donde pudiera recuperarse. Lo que comenzó como un acto de compasión pronto se convirtió en una profunda conexión. Cleo, con su naturaleza reservada pero dulce, rápidamente se ganó un lugar en mi corazón.
+          
+          A medida que pasaban los días, Cleo comenzó a florecer. Su pelaje se volvió más brillante, su paso más seguro y su confianza en sí misma creció día a día. Pero lo más importante, encontró algo que todos anhelamos: un hogar y una familia que la amaba incondicionalmente.
+          
+          Ahora, Cleo es la reina indiscutible de mi hogar. Sus ronroneos suaves y sus travesuras juguetonas llenan cada rincón con alegría y amor. Aunque su pasado puede haber sido difícil, ella nos enseña a todos sobre la resiliencia y la capacidad de encontrar la felicidad, sin importar las circunstancias.
+          
+          Cada vez que miro a Cleo, me recuerda el poder del amor y la importancia de brindar una segunda oportunidad. Ella puede haber sido abandonada una vez, pero ahora está rodeada de amor y cuidado, y eso es todo lo que importa.
+          
+          </p>
+        <a class="btn btn-primary btn-lg rounded-0 my-3" href="{% static 'curriculum.pdf' %}" target="_blank">Download CV</a>
+    </div>
+</header> <!-- Cerrado -->
+<!-- Porfolio Section -->
+<div class="row my-4 text-center">
+
+  <h3>BIBLIOTECA</h3>
+  <p>Descubre con Cleo</p>
+
+  {% for project in projects %}
+  <div class="col-md-4 p-4">
+    <div class="card bg-black card-project">
+      <img src="{{project.image.url }}" class="card-img-top" />
+
+      <div class="card-body">
+
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        {% if project.url %}
+        <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Detallitos</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
